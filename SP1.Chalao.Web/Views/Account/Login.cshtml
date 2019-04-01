@@ -1,0 +1,40 @@
+﻿@model SP1.Chalao.Web.ViewModels.LoginVM
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm("Login"))
+{
+
+    if (SP1.Chalao.Framework.Helper.ValidationHelper.IsValidString(ViewBag.Error))
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Error
+        </div>
+    }
+
+    <div class="form-group">
+          @Html.LabelFor(m => m.Email)
+          @*@Html.TextBoxFor(m => m.Email, new { @class = "form-control" })*@
+          <div></div>
+          <input type="text" style="height: 30px" name="Email" value="@Model.Email" />
+          @Html.ValidationMessageFor(m => m.Email)
+        </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password)
+        @*@Html.TextBoxFor(m => m.Password, new { @class = "form-control"})*@
+        <div></div>
+        <input type="password" style="height: 30px" name="Password" value="@Model.Password" />
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+    
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.RememberMe) Remember Me
+        </label>
+    </div>
+
+    <button type="submit" class="btn btn-success">Login</button>
+}
+

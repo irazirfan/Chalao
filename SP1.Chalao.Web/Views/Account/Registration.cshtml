@@ -1,0 +1,82 @@
+﻿@using SP1.Chalao.Framework.Constants
+@model SP1.Chalao.Model.RegistrationModel
+
+@{
+    ViewBag.Title = "Registration";
+}
+<div>
+
+</div>
+<h2 align="center">Registration</h2>
+<br />
+
+@using (Html.BeginForm("Registration"))
+{
+    if(SP1.Chalao.Framework.Helper.ValidationHelper.IsValidString(ViewBag.Error))
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Error
+        </div>
+    } 
+
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 box-Shadow" align="center">
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name" })
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+            <div class="form-group">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <div class="form-group">
+                @Html.PasswordFor(m => m.CPassword, new { @class = "form-control", placeholder = "Confirm Password" })
+                @Html.ValidationMessageFor(m => m.CPassword)
+            </div>
+
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", placeholder = "Mobile" })
+                @Html.ValidationMessageFor(m => m.Mobile)
+            </div>
+
+            @*
+            <div class="form-group">
+            @Html.DropDownListFor(m => m.User_TypeID, new SelectList(EnumCollection.getUserType(), "ID", "Name"), "Select User Type", new { @class = "form-control", placeholder = "Mobile" })
+            @Html.ValidationMessageFor(m => m.User_TypeID)
+            </div>
+            *@
+
+
+            <input type="hidden" name="User_TypeID" value=3 />
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Save</button>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+}
+
+
+
+
+
+@section scripts
+{
+    <script>
+
+        $(document).ready(function () {
+
+            $('.menu').removeClass('active');
+            $('#signUpMenu').addClass('active');
+
+        });
+
+    </script>
+}
