@@ -55,7 +55,7 @@ namespace SP1.Chalao.Web.Controllers
                 return View(model);
             }
             else
-                return Content("Login");
+                return RedirectToAction("Login","Account");
         }
         public ActionResult Login()
         {
