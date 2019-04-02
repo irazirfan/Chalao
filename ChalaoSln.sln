@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SP1.Chalao.Repo", "RiderRep
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SP1.Chalao.Framework", "SP1.Chalao.Framework\SP1.Chalao.Framework.csproj", "{CB09E2A3-4842-4633-9752-15161E0B1921}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SP1.Chalao.Web.Framework", "SP1.Chalao.Web.Framework\SP1.Chalao.Web.Framework.csproj", "{8B544CCA-D3E3-4A40-AC14-C0DAA1590775}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{CB09E2A3-4842-4633-9752-15161E0B1921}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB09E2A3-4842-4633-9752-15161E0B1921}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB09E2A3-4842-4633-9752-15161E0B1921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B544CCA-D3E3-4A40-AC14-C0DAA1590775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B544CCA-D3E3-4A40-AC14-C0DAA1590775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B544CCA-D3E3-4A40-AC14-C0DAA1590775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B544CCA-D3E3-4A40-AC14-C0DAA1590775}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{09A231B6-6A60-456A-BCC9-AEAB5D6F39CE} = {79894995-A8FE-4CFC-A464-4D78FD34F479}
 		{FD77CB64-76CB-4E2F-B60E-29FB4B1CEF3C} = {2CC45805-C338-4785-B5EF-573A4D7BE6F5}
 		{CB09E2A3-4842-4633-9752-15161E0B1921} = {79894995-A8FE-4CFC-A464-4D78FD34F479}
+		{8B544CCA-D3E3-4A40-AC14-C0DAA1590775} = {F619F37D-944E-4A0D-B716-E00CE330813A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B824D6DE-80E4-4E89-BEBD-818AAB2769E6}

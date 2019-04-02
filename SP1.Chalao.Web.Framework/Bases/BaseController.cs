@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using SP1.Chalao.Data;
-using SP1.Chalao.Entities;
+﻿using System.Web.Mvc;
 using ATP2.SMS.Repo;
+using SP1.Chalao.Data;
 
 namespace ATP2.SMS.Web.Framework.Bases
 {
