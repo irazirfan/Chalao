@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using SP1.Chalao.Framework.Constants;
 using SP1.Chalao.Web.Framework.Utils;
 
@@ -26,7 +27,14 @@ namespace SP1.Chalao.Web.Framework.Attributes
 
             if (HttpUtil.Current.User_TypeID != (int) CurrentType )
             {
-                filterContext.Result = new HttpUnauthorizedResult();
+                if (HttpUtil.Current.User_TypeID == (int) EnumCollection.UserTypeEnum.Admin)
+                {
+                    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(
+                    new {action="Index",controller="Admin"}));
+                }
+                if (HttpUtil.Current.User_TypeID == (int)EnumCollection.UserTypeEnum.Rider)
+                    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(
+                        new { action = "Index", controller = "Rider",error=1 }));
                 return;
             }
            
