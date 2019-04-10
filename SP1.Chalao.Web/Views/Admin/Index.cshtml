@@ -26,52 +26,25 @@
                     </div>
                 </div>
             </div>
-            <div class="panel panel-primary">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                    <h4 class="panel-title">
-                        <a style="text-decoration: none; display: block" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false">
-                            Employees
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="panel-body">
-                        <a class="list-group-item" href="#list">
-                            <span class="glyphicon glyphicon-th-list"></span> &nbsp; List
-                        </a>
-                        <a class="list-group-item" href="#add">
-                            <span class="glyphicon glyphicon-plus"></span> &nbsp; Add
-                        </a>
-                        <a class="list-group-item" href="#update">
-                            <span class="glyphicon glyphicon-pencil"></span> &nbsp; Update
-                        </a>
-                        <a class="list-group-item" href="#delete">
-                            <span class="glyphicon glyphicon-minus"></span> &nbsp;Delete
-                        </a>
-                    </div>
-                </div>
-            </div>
+
             <div class="panel panel-primary">
                 <div class="panel-heading" role="tab" id="headingThree">
                     <h4 class="panel-title">
                         <a style="text-decoration: none; display: block" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false">
-                            Riders
+                            Human Resource
                         </a>
                     </h4>
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                     <div class="panel-body">
-                        <a class="list-group-item" href="#navbar" onclick="AddTab('List', '@Url.Action("List", "Rider")')">
-                            <span class="glyphicon glyphicon-th-list"></span> &nbsp; List
+                        <a class="list-group-item" href="#navbar" onclick="AddTab('Admin', '@Url.Action("List", "Admin")')">
+                            <span class="glyphicon glyphicon-eye-open"></span> &nbsp; Admin
                         </a>
-                        <a class="list-group-item" href="#navbar" onclick="AddTab('Add', '@Url.Action("Add", "Rider")')">
-                            <span class="glyphicon glyphicon-plus"></span> &nbsp; Add
+                        <a class="list-group-item" href="#navbar" onclick="AddTab('Employee', '@Url.Action("list", "Employee")')">
+                            <span class="glyphicon glyphicon-briefcase"></span> &nbsp; Employee
                         </a>
-                        <a class="list-group-item" href="#navbar" onclick="AddTab('Update', '@Url.Action("Update", "Rider")')">
-                            <span class="glyphicon glyphicon-pencil"></span> &nbsp; Update
-                        </a>
-                        <a class="list-group-item" href="#navbar" onclick="AddTab('Delete', '@Url.Action("Delete", "Rider")')">
-                            <span class="glyphicon glyphicon-minus"></span> &nbsp;Delete
+                        <a class="list-group-item" href="#navbar" onclick="AddTab('Rider', '@Url.Action("list", "Rider")')">
+                            <span class="glyphicon glyphicon-user"></span> &nbsp; Rider
                         </a>
                     </div>
                 </div>
@@ -89,7 +62,7 @@
             <!-- Tab panes -->
             <div class="tab-content" id="mainTab">
                 <div role="tabpanel" class="tab-pane active" id="div1">
-                <div class="row">
+                    <div class="row">
                     <div class="col-md-6">
                         <img src="~/Content/images/1.jpg" style="width: 100%; height: 200px" class="img-thumbnail" />
                     </div>
@@ -120,7 +93,7 @@
         var i = 2;
         function AddTab(tabName, link) {
             $('#sideMenu').append('<li id="li' + i + '"><a href="#div' + i + '" role="tab" data-toggle="tab">' + tabName +' <span style="cursor: pointer" class="glyphicon glyphicon-remove-circle" onclick="RemoveTab('+i+')"></span></a></li>');
-            $('#mainTab').append('<div class="tab-pane" id="div' + i + '">' + link + '</div>');
+            $('#mainTab').append('<div class="tab-pane" id="div' + i + '"><iframe src="'+link+'" width="100%" height="530px"></iframe></div>');
             $('#sideMenu a:last').tab('show');
             i++;
         }
