@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace SP1.Chalao.Entities
 {
+    [Table("Users")]
     public partial class Users
     {
         [Key]
