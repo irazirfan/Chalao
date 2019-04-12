@@ -16,7 +16,7 @@ namespace SP1.Chalao.Entities
         public int ID { get; set; }
 
         [Required]
-        public string JoinDate { get; set; }
+        public DateTime JoinDate { get; set; }
 
         [ForeignKey("ID")]
         public virtual Users Users { get; set; }

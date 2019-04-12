@@ -19,9 +19,37 @@ namespace SP1.Chalao.Web.Controllers
         {
             if (HttpUtil.Current == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login","Account");
             }
+
             return View();
+        }
+
+        public ActionResult List(string key="")
+        {
+            var result = AdminRepo.GetAll(key);
+            if (TempData["Error"] != null)
+            {
+                ViewBag.Error = TempData["Error"];
+            }
+            return View(result);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var result = AdminRepo.GetByID(id);
+            return View(result.Data ?? new Admins(){Users = new Users()});
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var result = AdminRepo.Delete(id);
+
+            if (result.HasError)
+            {
+                TempData["Error"] = result.Message;
+            }
+            return RedirectToAction("List");
         }
     }
 }

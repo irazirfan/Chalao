@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using ATP2.SMS.Repo;
+using RiderRepo;
 using SP1.Chalao.Data;
 
 namespace ATP2.SMS.Web.Framework.Bases
@@ -29,6 +30,19 @@ namespace ATP2.SMS.Web.Framework.Bases
                     _UserRepo = new UserRepo();
 
                 return _UserRepo;
+            }
+        }
+
+        private AdminRepo _AdminRepo;
+
+        public AdminRepo AdminRepo
+        {
+            get
+            {
+                if (_AdminRepo == null)
+                    _AdminRepo = new AdminRepo();
+
+                return _AdminRepo;
             }
         }
     }

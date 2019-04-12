@@ -154,9 +154,5 @@ namespace SP1.Chalao.Web.Controllers
             return RedirectToAction("Login","Account");
         }
 
-        public ActionResult UnAuthorized()
-        {
-            return View();
-        }
-}
+    }
 }
