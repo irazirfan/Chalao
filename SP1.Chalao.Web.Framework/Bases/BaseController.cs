@@ -20,29 +20,42 @@ namespace ATP2.SMS.Web.Framework.Bases
             }
         }
 
-        private UserRepo _UserRepo;
+        private UserRepo _userRepo;
 
         public UserRepo UserRepo
         {
             get
             {
-                if (_UserRepo == null)
-                    _UserRepo = new UserRepo();
+                if (_userRepo == null)
+                    _userRepo = new UserRepo();
 
-                return _UserRepo;
+                return _userRepo;
             }
         }
 
-        private AdminRepo _AdminRepo;
+        private AdminRepo _adminRepo;
 
         public AdminRepo AdminRepo
         {
             get
             {
-                if (_AdminRepo == null)
-                    _AdminRepo = new AdminRepo();
+                if (_adminRepo == null)
+                    _adminRepo = new AdminRepo();
 
-                return _AdminRepo;
+                return _adminRepo;
+            }
+        }
+
+        private EmployeeRepo _employeeRepo;
+
+        public EmployeeRepo EmployeeRepo
+        {
+            get
+            {
+                if (_employeeRepo == null)
+                    _employeeRepo = new EmployeeRepo();
+
+                return _employeeRepo;
             }
         }
     }

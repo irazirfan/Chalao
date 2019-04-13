@@ -10,14 +10,14 @@ using SP1.Chalao.Framework.Objects;
 
 namespace RiderRepo
 {
-    public class AdminRepo : BaseRepo
+    public class EmployeeRepo : BaseRepo
     {
-        public Result<List<Admins>> GetAll(string key = "")
+        public Result<List<Employees>> GetAll(string key = "")
         {
-            var result = new Result<List<Admins>>();
+            var result = new Result<List<Employees>>();
             try
             {
-                var list = Context.Admins.Include("Users").ToList();
+                var list = Context.Employeeses.Include("Users").ToList();
 
                 if (ValidationHelper.IsValidString(key))
                     list = list.Where(a => a.Users.Name.ToLower().Contains(key.ToLower())).ToList();
@@ -34,12 +34,12 @@ namespace RiderRepo
             return result;
         }
 
-        public Result<Admins> GetByID(int id)
+        public Result<Employees> GetByID(int id)
         {
-            var result = new Result<Admins>();
+            var result = new Result<Employees>();
             try
             {
-                result.Data = Context.Admins.Include("Users").FirstOrDefault(d=> d.ID == id);
+                result.Data = Context.Employeeses.Include("Users").FirstOrDefault(d=> d.ID == id);
             }
             catch (Exception e)
             {
@@ -49,9 +49,9 @@ namespace RiderRepo
 
             return result;
         }
-        public Result<Admins> Save(Admins value)
+        public Result<Employees> Save(Employees value)
         {
-            var result = new Result<Admins>();
+            var result = new Result<Employees>();
 
             try
             {
@@ -70,16 +70,16 @@ namespace RiderRepo
                 objToSave1.Email = value.Users.Email;
                 objToSave1.Mobile = value.Users.Mobile;
                 objToSave1.Password = value.Users.Password;
-                objToSave1.User_TypeID = (int) EnumCollection.UserTypeEnum.Admin;
+                objToSave1.User_TypeID = (int) EnumCollection.UserTypeEnum.Employee;
 
                 Context.SaveChanges();
 
-                var objToSave2 = Context.Admins.SingleOrDefault(a => a.ID == value.ID);
+                var objToSave2 = Context.Employeeses.SingleOrDefault(a => a.ID == value.ID);
 
                 if (objToSave2 == null)
                 {
-                    objToSave2 = new Admins();
-                    Context.Admins.Add(objToSave2);
+                    objToSave2 = new Employees();
+                    Context.Employeeses.Add(objToSave2);
                 }
 
                 objToSave2.ID = objToSave1.ID;
@@ -87,7 +87,7 @@ namespace RiderRepo
 
                 Context.SaveChanges();
                 
-                result.Data = Context.Admins.Include("Users").FirstOrDefault(d => d.ID == objToSave1.ID);
+                result.Data = Context.Employeeses.Include("Users").FirstOrDefault(d => d.ID == objToSave1.ID);
 
             }
             catch (Exception e)
@@ -105,17 +105,17 @@ namespace RiderRepo
 
             try
             {
-                var objToDelete1 = Context.Admins.FirstOrDefault(d => d.ID == id);
+                var objToDelete1 = Context.Employeeses.FirstOrDefault(d => d.ID == id);
                 var objToDelete2 = Context.Users.FirstOrDefault(d=> d.ID == id);
 
                 if (objToDelete1 == null || objToDelete2 == null)
                 {
                     result.HasError = true;
-                    result.Message = "Invalid Admin ID";
+                    result.Message = "Invalid Employee ID";
                     return result;
                 }
 
-                Context.Admins.Remove(objToDelete1);
+                Context.Employeeses.Remove(objToDelete1);
                 Context.Users.Remove(objToDelete2);
                 Context.SaveChanges();
 
@@ -130,7 +130,7 @@ namespace RiderRepo
             return result;
         }
 
-        private bool IsValidToSave(Admins obj, Result<Admins> result)
+        private bool IsValidToSave(Employees obj, Result<Employees> result)
         {
             if (!ValidationHelper.IsValidString(obj.Users.Name))
             {

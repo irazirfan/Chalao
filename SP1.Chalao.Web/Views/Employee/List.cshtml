@@ -1,18 +1,18 @@
 ﻿@using SP1.Chalao.Framework.Helper
 @using ValidationHelper = System.Web.WebPages.ValidationHelper
-@model SP1.Chalao.Framework.Objects.Result<List<SP1.Chalao.Entities.Admins>>
+@model SP1.Chalao.Framework.Objects.Result<List<SP1.Chalao.Entities.Employees>>
 @{
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_InnerLayout.cshtml";
 }
 
-<h2> Admins </h2>
+<h2> Employee </h2>
 
 <div class="row">
     <div class="col-md-8">
         <input type="text" placeholder="search" id="searchText" value="@Request.Params["key"]"/>
-        <a onclick="SearchUrl('@Url.Action("List","Admin")')" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-search">Search</span></a>
-        <a href="@Url.Action("Edit","Admin", new {id=-1})" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus">Add</span></a>
+        <a onclick="SearchUrl('@Url.Action("List","Employee")')" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-search">Search</span></a>
+        <a href="@Url.Action("Edit","Employee", new {id=-1})" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus">Add</span></a>
     </div>
     
     @if (SP1.Chalao.Framework.Helper.ValidationHelper.IsValidString(ViewBag.Error))
@@ -35,17 +35,17 @@
                 <th>Joining Date</th>
                 <th>Action</th>
             </tr>
-            @foreach (var admin in Model.Data)
+            @foreach (var employee in Model.Data)
             {
                 <tr>
-                    <td>@admin.ID</td>
-                    <td>@admin.Users.Name</td>
-                    <td>@admin.Users.Email</td>
-                    <td>@admin.Users.Mobile</td>
-                    <td>@admin.JoinDate.ToString("dd/MM/yyyy")</td>
+                    <td>@employee.ID</td>
+                    <td>@employee.Users.Name</td>
+                    <td>@employee.Users.Email</td>
+                    <td>@employee.Users.Mobile</td>
+                    <td>@employee.JoinDate.ToString("dd/MM/yyyy")</td>
                     <td>
-                        <a href="@Url.Action("Edit","Admin", new {id =admin.ID })" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-edit">Edit</span></a>
-                        <a onclick="DeleteUrl('@Url.Action("Delete","Admin", new {id = admin.ID})')" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-remove">Delete</span></a>
+                        <a href="@Url.Action("Edit","Employee", new {id =employee.ID })" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-edit">Edit</span></a>
+                        <a onclick="DeleteUrl('@Url.Action("Delete","Employee", new {id = employee.ID})')" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-remove">Delete</span></a>
                     </td>
                 </tr>
             }
@@ -70,4 +70,3 @@
 
     </script>
 }
-
