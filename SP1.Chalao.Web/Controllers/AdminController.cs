@@ -70,5 +70,31 @@ namespace SP1.Chalao.Web.Controllers
             }
             return RedirectToAction("List");
         }
+
+        public ActionResult Profile(int id)
+        {
+            var result = AdminRepo.GetByID(id);
+            return View(result.Data ?? new Admins() { Users = new Users(), JoinDate = DateTime.Now });
+        }
+
+        [HttpPost]
+        public ActionResult Profile(Admins admins)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(admins);
+            }
+
+            var result = AdminRepo.Save(admins);
+
+            if (result.HasError)
+            {
+                ViewBag.Error = result.Message;
+                return View(admins);
+            }
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

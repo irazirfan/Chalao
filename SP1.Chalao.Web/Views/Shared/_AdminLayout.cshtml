@@ -1,4 +1,5 @@
-﻿@using SP1.Chalao.Web.Framework.Utils
+﻿@using SP1.Chalao.Web.Controllers
+@using SP1.Chalao.Web.Framework.Utils
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,11 +23,11 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left">
                 <li id="homeMenu">@Html.ActionLink("Home", "Index", "Admin")</li>
-                <li id="profileMenu">@Html.ActionLink("Profile", "Profile", "Admin")</li>
+                <li id="profileMenu"><a href="@Url.Action("Profile","Admin", new {id =HttpUtil.Current.ID })">Profile</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li id="profileMenu">@Html.ActionLink("Welcome, " + HttpUtil.Current.Name, "Profile", "Admin")</li>
+                <li id="profileMenu"><a href="@Url.Action("Profile","Admin", new {id =HttpUtil.Current.ID })">Welcome, @HttpUtil.Current.Name</a></li>
                 <li id="signOutMenu">@Html.ActionLink("Sign Out", "Logout", "Account")</li>
             </ul>
         </div>

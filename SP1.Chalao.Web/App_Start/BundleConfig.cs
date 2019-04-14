@@ -23,7 +23,7 @@ namespace SP1.Chalao.Web
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-cerulean.css",
+                      "~/Content/bootstrap-superhero.css",
                       "~/Content/site.css"));
         }
     }
