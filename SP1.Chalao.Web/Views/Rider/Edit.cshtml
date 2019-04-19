@@ -1,11 +1,11 @@
 ﻿@using SP1.Chalao.Framework.Helper
-@model SP1.Chalao.Entities.Employees
+@model SP1.Chalao.Entities.Riders
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_InnerLayout.cshtml";
 }
 
-<h2>Employees</h2>
+<h2>Riders</h2>
 
 @using (Html.BeginForm("Edit"))
 {
@@ -36,9 +36,9 @@
         @Html.ValidationMessageFor(m => m.Users.Mobile)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.JoinDate)
-        @Html.TextBoxFor(m => m.JoinDate, "{0: d MMM yyyy}", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.JoinDate)
+        @Html.LabelFor(m => m.DOB)
+        @Html.TextBoxFor(m => m.DOB, "{0: d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DOB)
     </div>
     <div class="form-group">
         <input type="submit" class="btn btn-success" value="Save" />

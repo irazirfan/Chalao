@@ -163,6 +163,9 @@
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Employee\List.cshtml" />
     <Content Include="Views\Admin\Profile.cshtml" />
+    <Content Include="Views\Rider\List.cshtml" />
+    <Content Include="Views\Rider\Edit.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

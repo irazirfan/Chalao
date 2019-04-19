@@ -16,8 +16,13 @@ namespace SP1.Chalao.Web.Controllers
     public class EmployeeController : BaseController
     {
         // GET: Admin
-        public ActionResult Index()
+        public ActionResult Index(int error = -1)
+
         {
+            if (error != -1)
+            {
+                ViewBag.Message = "You were trying to bypass the security.";
+            }
             if (HttpUtil.Current == null)
             {
                 return RedirectToAction("Login", "Account");

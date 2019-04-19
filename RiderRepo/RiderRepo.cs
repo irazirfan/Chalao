@@ -10,14 +10,14 @@ using SP1.Chalao.Framework.Objects;
 
 namespace RiderRepo
 {
-    public class EmployeeRepo : BaseRepo
+    public class RiderRepo : BaseRepo
     {
-        public Result<List<Employees>> GetAll(string key = "")
+        public Result<List<Riders>> GetAll(string key = "")
         {
-            var result = new Result<List<Employees>>();
+            var result = new Result<List<Riders>>();
             try
             {
-                var list = Context.Employees.Include("Users").ToList();
+                var list = Context.Riders.Include("Users").ToList();
 
                 if (ValidationHelper.IsValidString(key))
                     list = list.Where(a => a.Users.Name.ToLower().Contains(key.ToLower())).ToList();
@@ -34,12 +34,12 @@ namespace RiderRepo
             return result;
         }
 
-        public Result<Employees> GetByID(int id)
+        public Result<Riders> GetByID(int id)
         {
-            var result = new Result<Employees>();
+            var result = new Result<Riders>();
             try
             {
-                result.Data = Context.Employees.Include("Users").FirstOrDefault(d=> d.ID == id);
+                result.Data = Context.Riders.Include("Users").FirstOrDefault(d=> d.ID == id);
             }
             catch (Exception e)
             {
@@ -49,9 +49,9 @@ namespace RiderRepo
 
             return result;
         }
-        public Result<Employees> Save(Employees value)
+        public Result<Riders> Save(Riders value)
         {
-            var result = new Result<Employees>();
+            var result = new Result<Riders>();
 
             try
             {
@@ -83,11 +83,11 @@ namespace RiderRepo
                 }
 
                 objToSave2.ID = objToSave1.ID;
-                objToSave2.JoinDate = value.JoinDate;
+                objToSave2.JoinDate = value.DOB;
 
                 Context.SaveChanges();
                 
-                result.Data = Context.Employees.Include("Users").FirstOrDefault(d => d.ID == objToSave1.ID);
+                result.Data = Context.Riders.Include("Users").FirstOrDefault(d => d.ID == objToSave1.ID);
 
             }
             catch (Exception e)
@@ -130,7 +130,7 @@ namespace RiderRepo
             return result;
         }
 
-        private bool IsValidToSave(Employees obj, Result<Employees> result)
+        private bool IsValidToSave(Riders obj, Result<Riders> result)
         {
             if (!ValidationHelper.IsValidString(obj.Users.Name))
             {

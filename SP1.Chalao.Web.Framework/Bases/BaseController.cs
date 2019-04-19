@@ -58,6 +58,20 @@ namespace ATP2.SMS.Web.Framework.Bases
                 return _employeeRepo;
             }
         }
+
+        private RiderRepo.RiderRepo _riderRepo;
+
+        public RiderRepo.RiderRepo RiderRepo
+        {
+            get
+            {
+                if (_riderRepo == null)
+                    _riderRepo = new RiderRepo.RiderRepo();
+
+                return _riderRepo;
+            }
+        }
+
     }
 
 

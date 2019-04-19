@@ -33,6 +33,10 @@ namespace SP1.Chalao.Web.Framework.Attributes
                 if (HttpUtil.Current.User_TypeID == (int)EnumCollection.UserTypeEnum.Rider)
                     filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(
                         new { action = "Index", controller = "Rider",error=1 }));
+
+                if (HttpUtil.Current.User_TypeID == (int)EnumCollection.UserTypeEnum.Employee)
+                    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(
+                        new { action = "Index", controller = "Employee", error = 1 }));
                 return;
             }
            
