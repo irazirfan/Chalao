@@ -16,6 +16,7 @@ namespace SP1.Chalao.Entities
         public int ID { get; set; }
 
         [Required]
+        [Display(Name = "Date Of Birth")]
         public DateTime DOB { get; set; }
 
         [ForeignKey("ID")]

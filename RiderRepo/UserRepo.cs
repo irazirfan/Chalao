@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SP1.Chalao.Entities;
 using SP1.Chalao.Framework.Objects;
 using RiderRepo;
+using SP1.Chalao.Framework.Constants;
 
 namespace ATP2.SMS.Repo
 {
@@ -21,6 +22,9 @@ namespace ATP2.SMS.Repo
                 if (objToSave == null)
                 {
                     objToSave = new Users();
+                    if(value.User_TypeID==(int)EnumCollection.UserTypeEnum.Rider)
+                        objToSave.Rider = new Riders();
+
                     Context.Users.Add(objToSave);
                 }
 
@@ -32,6 +36,11 @@ namespace ATP2.SMS.Repo
                 objToSave.Password = value.Password;
                 objToSave.Mobile = value.Mobile;
                 objToSave.User_TypeID = value.User_TypeID;
+                if (value.User_TypeID == (int) EnumCollection.UserTypeEnum.Rider)
+                {
+                    objToSave.Rider.DOB = value.Rider.DOB;
+                }
+
 
                 Context.SaveChanges();
                 result.Data = objToSave;

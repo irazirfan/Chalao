@@ -12,6 +12,7 @@ namespace SP1.Chalao.Entities
     [Table("Users")]
     public partial class Users
     {
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
@@ -31,6 +32,7 @@ namespace SP1.Chalao.Entities
 
         public int User_TypeID { get; set; }
 
-
+        [ForeignKey("ID")]
+        public virtual Riders Rider { get; set; }
     }
 }

@@ -44,10 +44,16 @@ namespace SP1.Chalao.Web.Controllers
                 Email = model.Email,
                 Password = model.Password,
                 Mobile = model.Mobile,
-                User_TypeID = model.User_TypeID
+                User_TypeID = (int)EnumCollection.UserTypeEnum.Rider,
+                Rider = new Riders()
+                {
+                    DOB = model.DOB
+                }
             };
 
+
             var result = UserRepo.Save(users);
+
 
             if (result.HasError)
             {
