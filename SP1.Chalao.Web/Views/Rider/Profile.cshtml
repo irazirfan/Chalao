@@ -1,5 +1,5 @@
 ﻿@using SP1.Chalao.Framework.Helper
-@model SP1.Chalao.Entities.Admins
+@model SP1.Chalao.Entities.Riders
 @{
     ViewBag.Title = "Profile";
     Layout = "~/Views/Shared/_InnerLayout.cshtml";
@@ -36,9 +36,9 @@
             @Html.ValidationMessageFor(m => m.Users.Mobile)
         </div>
         <div class="form-group">
-            @Html.Label("Join Date")
-            @Html.EditorFor(m => m.JoinDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Date Of Birth", @readonly = "true" } })
-            @Html.ValidationMessageFor(m => m.JoinDate)
+            @Html.Label("Date of Birth")
+            @Html.EditorFor(m => m.DOB, new { htmlAttributes = new { @class = "form-control", placeholder = "Date Of Birth", @readonly = "true" } })
+            @Html.ValidationMessageFor(m => m.DOB)
         </div>
         <div class="form-group">
             <input type="submit" class="btn btn-success" value="Save" />

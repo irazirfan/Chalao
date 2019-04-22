@@ -12,10 +12,11 @@ using SP1.Chalao.Web.Framework.Utils;
 
 namespace SP1.Chalao.Web.Controllers
 {
-    [ChalaoAuthorize(EnumCollection.UserTypeEnum.Admin)]
+    
     public class EmployeeController : BaseController
     {
-        // GET: Admin
+        // GET: Employee
+        [ChalaoAuthorize(EnumCollection.UserTypeEnum.Employee)]
         public ActionResult Index(int error = -1)
 
         {
@@ -23,14 +24,10 @@ namespace SP1.Chalao.Web.Controllers
             {
                 ViewBag.Message = "You were trying to bypass the security.";
             }
-            if (HttpUtil.Current == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-
             return View();
         }
 
+        [ChalaoAuthorize(EnumCollection.UserTypeEnum.Admin)]
         public ActionResult List(string key = "")
         {
             var result = EmployeeRepo.GetAll(key);
@@ -66,6 +63,7 @@ namespace SP1.Chalao.Web.Controllers
             return RedirectToAction("List");
         }
 
+        [ChalaoAuthorize(EnumCollection.UserTypeEnum.Admin)]
         public ActionResult Delete(int id)
         {
             var result = EmployeeRepo.Delete(id);
@@ -75,6 +73,31 @@ namespace SP1.Chalao.Web.Controllers
                 TempData["Error"] = result.Message;
             }
             return RedirectToAction("List");
+        }
+
+        public ActionResult Profile(int id)
+        {
+            var result = EmployeeRepo.GetByID(id);
+            return View(result.Data ?? new Employees() { Users = new Users(), JoinDate = DateTime.Now });
+        }
+
+        [HttpPost]
+        public ActionResult Profile(Employees employees)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(employees);
+            }
+
+            var result = EmployeeRepo.Save(employees);
+
+            if (result.HasError)
+            {
+                ViewBag.Error = result.Message;
+                return View(employees);
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

@@ -70,6 +70,8 @@ namespace SP1.Chalao.Web.Controllers
             {
                 if (HttpUtil.Current.User_TypeID == (int) EnumCollection.UserTypeEnum.Admin)
                     return RedirectToAction("Index", "Admin");
+                if (HttpUtil.Current.User_TypeID == (int)EnumCollection.UserTypeEnum.Employee)
+                    return RedirectToAction("Index", "Employee");
                 if (HttpUtil.Current.User_TypeID == (int)EnumCollection.UserTypeEnum.Rider)
                     return RedirectToAction("Index", "Rider");
             }
@@ -145,6 +147,8 @@ namespace SP1.Chalao.Web.Controllers
                     return RedirectToAction("Index", "Admin");
                 else if (HttpUtil.Current.User_TypeID == (int)EnumCollection.UserTypeEnum.Rider)
                     return RedirectToAction("Index", "Rider");
+                else if (HttpUtil.Current.User_TypeID == (int)EnumCollection.UserTypeEnum.Employee)
+                    return RedirectToAction("Index", "Employee");
                 else
                     return RedirectToAction("Login", "Account");
             }

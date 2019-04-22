@@ -12,10 +12,11 @@ using SP1.Chalao.Web.Framework.Utils;
 
 namespace SP1.Chalao.Web.Controllers
 {
-    [ChalaoAuthorize(EnumCollection.UserTypeEnum.Admin)]
+    
     public class RiderController : BaseController
     {
         // GET: Rider
+        [ChalaoAuthorize(EnumCollection.UserTypeEnum.Rider)]
         public ActionResult Index(int error=-1)
 
         {
@@ -23,14 +24,10 @@ namespace SP1.Chalao.Web.Controllers
             {
                 ViewBag.Message = "You were trying to bypass the security.";
             }
-            if (HttpUtil.Current == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
 
             return View();
         }
-
+        [ChalaoAuthorize(EnumCollection.UserTypeEnum.Admin)]
         public ActionResult List(string key = "")
         {
             var result = RiderRepo.GetAll(key);
@@ -75,6 +72,31 @@ namespace SP1.Chalao.Web.Controllers
                 TempData["Error"] = result.Message;
             }
             return RedirectToAction("List");
+        }
+
+        public ActionResult Profile(int id)
+        {
+            var result = RiderRepo.GetByID(id);
+            return View(result.Data ?? new Riders() { Users = new Users(), DOB = DateTime.Now });
+        }
+
+        [HttpPost]
+        public ActionResult Profile(Riders riders)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(riders);
+            }
+
+            var result = RiderRepo.Save(riders);
+
+            if (result.HasError)
+            {
+                ViewBag.Error = result.Message;
+                return View(result);
+            }
+
+            return RedirectToAction("Index");
         }
     }
 
