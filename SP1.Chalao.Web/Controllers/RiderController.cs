@@ -12,7 +12,7 @@ using SP1.Chalao.Web.Framework.Utils;
 
 namespace SP1.Chalao.Web.Controllers
 {
-    [ChalaoAuthorize(EnumCollection.UserTypeEnum.Rider)]
+    [ChalaoAuthorize(EnumCollection.UserTypeEnum.Admin)]
     public class RiderController : BaseController
     {
         // GET: Rider

@@ -40,7 +40,6 @@ namespace SP1.Chalao.Web.Controllers
 
             var riders = new Riders()
             {   
-                ID = model.ID,
                 DOB = model.DOB,
                 
                 Users = new Users()
