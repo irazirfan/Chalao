@@ -7,11 +7,34 @@ using SP1.Chalao.Entities;
 using SP1.Chalao.Framework.Objects;
 using RiderRepo;
 using SP1.Chalao.Framework.Constants;
+using SP1.Chalao.Framework.Helper;
 
 namespace ATP2.SMS.Repo
 {
     public class UserRepo : BaseRepo
     {
+        public Result<List<Users>> GetAll(string key = "")
+        {
+            var result = new Result<List<Users>>();
+            try
+            {
+                var list = Context.Users.Include("Riders").ToList();
+
+                if (ValidationHelper.IsValidString(key))
+                    list = list.Where(a => a.Rider.Users.Name.ToLower().Contains(key.ToLower())).ToList();
+
+                result.Data = list;
+
+            }
+            catch (Exception e)
+            {
+                result.HasError = true;
+                result.Message = e.Message;
+            }
+
+            return result;
+        }
+
         public Result<Users> Save(Users value)
         {
             var result = new Result<Users>();
@@ -44,6 +67,53 @@ namespace ATP2.SMS.Repo
 
                 Context.SaveChanges();
                 result.Data = objToSave;
+            }
+            catch (Exception e)
+            {
+                result.HasError = true;
+                result.Message = e.Message;
+            }
+
+            return result;
+        }
+
+        public Result<Riders> GetByID(int id)
+        {
+            var result = new Result<Riders>();
+            try
+            {
+                result.Data = Context.Riders.Include("Users").FirstOrDefault(d => d.ID == id);
+            }
+            catch (Exception e)
+            {
+                result.HasError = true;
+                result.Message = e.Message;
+            }
+
+            return result;
+        }
+
+        public Result<bool> Delete(int id)
+        {
+            var result = new Result<bool>();
+
+            try
+            {
+                var objToDelete1 = Context.Riders.FirstOrDefault(d => d.ID == id);
+                var objToDelete2 = Context.Users.FirstOrDefault(d => d.ID == id);
+
+                if (objToDelete1 == null || objToDelete2 == null)
+                {
+                    result.HasError = true;
+                    result.Message = "Invalid Rider ID";
+                    return result;
+                }
+
+                Context.Riders.Remove(objToDelete1);
+                Context.Users.Remove(objToDelete2);
+                Context.SaveChanges();
+
+                result.Data = true;
             }
             catch (Exception e)
             {

@@ -14,17 +14,17 @@ namespace SP1.Chalao.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
-        public virtual int ID { get; set; }
+        public int ID { get; set; }
 
         [Required]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         [Required]
         [EmailAddress]
-        public virtual string Email { get; set; }
+        public string Email { get; set; }
 
         [Required]
-        public virtual string Password { get; set; }
+        public string Password { get; set; }
 
         [Required]
         [Compare("Password", ErrorMessage = "Password & Confirm Password don't match")]

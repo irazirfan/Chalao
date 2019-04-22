@@ -38,21 +38,23 @@ namespace SP1.Chalao.Web.Controllers
                 return View(model);
             }
 
-            var users = new Users()
-            {
-                Name = model.Name,
-                Email = model.Email,
-                Password = model.Password,
-                Mobile = model.Mobile,
-                User_TypeID = (int)EnumCollection.UserTypeEnum.Rider,
-                Rider = new Riders()
+            var riders = new Riders()
+            {   
+                ID = model.ID,
+                DOB = model.DOB,
+                
+                Users = new Users()
                 {
-                    DOB = model.DOB
+                    Name = model.Name,
+                    Email = model.Email,
+                    Password = model.Password,
+                    Mobile = model.Mobile,
+                    User_TypeID = (int)EnumCollection.UserTypeEnum.Rider,
                 }
             };
 
 
-            var result = UserRepo.Save(users);
+            var result = RiderRepo.Save(riders);
 
 
             if (result.HasError)
