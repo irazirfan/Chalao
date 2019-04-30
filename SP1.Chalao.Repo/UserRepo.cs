@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using SP1.Chalao.Entities;
 using SP1.Chalao.Framework.Objects;
-using RiderRepo;
 using SP1.Chalao.Framework.Constants;
 using SP1.Chalao.Framework.Helper;
+using SP1.Chalao.Repo;
 
-namespace ATP2.SMS.Repo
+namespace SP1.Chalao.Repo
 {
     public class UserRepo : BaseRepo
     {

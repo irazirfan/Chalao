@@ -199,21 +199,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Scripts\jquery-ui-1.12.1.js" />
-    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
-    <Content Include="Views\Admin\List.cshtml" />
-    <Content Include="Views\Shared\_InnerLayout.cshtml" />
-    <Content Include="Views\Admin\Edit.cshtml" />
-    <Content Include="Views\Employee\Edit.cshtml" />
-    <Content Include="Views\Employee\List.cshtml" />
-    <Content Include="Views\Admin\Profile.cshtml" />
-    <Content Include="Views\Rider\List.cshtml" />
-    <Content Include="Views\Rider\Edit.cshtml" />
-    <Content Include="Views\Employee\Index.cshtml" />
-    <Content Include="Views\ParkingZone\Index.cshtml" />
-    <Content Include="Views\Shared\_EmployeeLayout.cshtml" />
-    <Content Include="Views\Employee\Profile.cshtml" />
-    <Content Include="Views\Rider\Profile.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -237,12 +222,27 @@
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Admin\List.cshtml" />
+    <Content Include="Views\Shared\_InnerLayout.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Employee\Edit.cshtml" />
+    <Content Include="Views\Employee\List.cshtml" />
+    <Content Include="Views\Admin\Profile.cshtml" />
+    <Content Include="Views\Rider\List.cshtml" />
+    <Content Include="Views\Rider\Edit.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\ParkingZone\Index.cshtml" />
+    <Content Include="Views\Shared\_EmployeeLayout.cshtml" />
+    <Content Include="Views\Employee\Profile.cshtml" />
+    <Content Include="Views\Rider\Profile.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Rider\Index.cshtml" />
@@ -272,10 +272,6 @@
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RiderRepo\SP1.Chalao.Repo.csproj">
-      <Project>{FD77CB64-76CB-4E2F-B60E-29FB4B1CEF3C}</Project>
-      <Name>SP1.Chalao.Repo</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SP1.Chalao.Data\SP1.Chalao.Data.csproj">
       <Project>{9431780e-ad1b-49ba-b728-8bb76b1478c9}</Project>
       <Name>SP1.Chalao.Data</Name>
@@ -291,6 +287,10 @@
     <ProjectReference Include="..\SP1.Chalao.Model\SP1.Chalao.Model.csproj">
       <Project>{09a231b6-6a60-456a-bcc9-aeab5d6f39ce}</Project>
       <Name>SP1.Chalao.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SP1.Chalao.Repo\SP1.Chalao.Repo.csproj">
+      <Project>{1e6f1b5a-66cc-425c-a1e0-2ad6da8e6f02}</Project>
+      <Name>SP1.Chalao.Repo</Name>
     </ProjectReference>
     <ProjectReference Include="..\SP1.Chalao.Web.Framework\SP1.Chalao.Web.Framework.csproj">
       <Project>{8b544cca-d3e3-4a40-ac14-c0daa1590775}</Project>

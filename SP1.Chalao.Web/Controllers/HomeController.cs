@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.UI;
-using SP1.Chalao.Web.ViewModels;
+﻿using System.Web.Mvc;
 
 namespace SP1.Chalao.Web.Controllers
 {

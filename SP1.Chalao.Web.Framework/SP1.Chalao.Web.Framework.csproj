@@ -85,10 +85,6 @@
     <Compile Include="Utils\httpUtil.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RiderRepo\SP1.Chalao.Repo.csproj">
-      <Project>{FD77CB64-76CB-4E2F-B60E-29FB4B1CEF3C}</Project>
-      <Name>SP1.Chalao.Repo</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SP1.Chalao.Data\SP1.Chalao.Data.csproj">
       <Project>{9431780E-AD1B-49BA-B728-8BB76B1478C9}</Project>
       <Name>SP1.Chalao.Data</Name>
@@ -100,6 +96,10 @@
     <ProjectReference Include="..\SP1.Chalao.Framework\SP1.Chalao.Framework.csproj">
       <Project>{CB09E2A3-4842-4633-9752-15161E0B1921}</Project>
       <Name>SP1.Chalao.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SP1.Chalao.Repo\SP1.Chalao.Repo.csproj">
+      <Project>{1E6F1B5A-66CC-425C-A1E0-2AD6DA8E6F02}</Project>
+      <Name>SP1.Chalao.Repo</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

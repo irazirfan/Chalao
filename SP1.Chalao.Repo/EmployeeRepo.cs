@@ -7,17 +7,18 @@ using SP1.Chalao.Entities;
 using SP1.Chalao.Framework.Constants;
 using SP1.Chalao.Framework.Helper;
 using SP1.Chalao.Framework.Objects;
+using SP1.Chalao.Repo;
 
-namespace RiderRepo
+namespace SP1.Chalao.Repo
 {
-    public class RiderRepo : BaseRepo
+    public class EmployeeRepo : BaseRepo
     {
-        public Result<List<Riders>> GetAll(string key = "")
+        public Result<List<Employees>> GetAll(string key = "")
         {
-            var result = new Result<List<Riders>>();
+            var result = new Result<List<Employees>>();
             try
             {
-                var list = Context.Riders.Include("Users").ToList();
+                var list = Context.Employees.Include("Users").ToList();
 
                 if (ValidationHelper.IsValidString(key))
                     list = list.Where(a => a.Users.Name.ToLower().Contains(key.ToLower())).ToList();
@@ -34,12 +35,12 @@ namespace RiderRepo
             return result;
         }
 
-        public Result<Riders> GetByID(int id)
+        public Result<Employees> GetByID(int id)
         {
-            var result = new Result<Riders>();
+            var result = new Result<Employees>();
             try
             {
-                result.Data = Context.Riders.Include("Users").FirstOrDefault(d=> d.ID == id);
+                result.Data = Context.Employees.Include("Users").FirstOrDefault(d=> d.ID == id);
             }
             catch (Exception e)
             {
@@ -49,9 +50,9 @@ namespace RiderRepo
 
             return result;
         }
-        public Result<Riders> Save(Riders value)
+        public Result<Employees> Save(Employees value)
         {
-            var result = new Result<Riders>();
+            var result = new Result<Employees>();
 
             try
             {
@@ -70,24 +71,24 @@ namespace RiderRepo
                 objToSave1.Email = value.Users.Email;
                 objToSave1.Mobile = value.Users.Mobile;
                 objToSave1.Password = value.Users.Password;
-                objToSave1.User_TypeID = (int) EnumCollection.UserTypeEnum.Rider;
+                objToSave1.User_TypeID = (int) EnumCollection.UserTypeEnum.Employee;
 
                 Context.SaveChanges();
 
-                var objToSave2 = Context.Riders.SingleOrDefault(a => a.ID == value.ID);
+                var objToSave2 = Context.Employees.SingleOrDefault(a => a.ID == value.ID);
 
                 if (objToSave2 == null)
                 {
-                    objToSave2 = new Riders();
-                    Context.Riders.Add(objToSave2);
+                    objToSave2 = new Employees();
+                    Context.Employees.Add(objToSave2);
                 }
 
                 objToSave2.ID = objToSave1.ID;
-                objToSave2.DOB = value.DOB;
+                objToSave2.JoinDate = value.JoinDate;
 
                 Context.SaveChanges();
                 
-                result.Data = Context.Riders.Include("Users").FirstOrDefault(d => d.ID == objToSave1.ID);
+                result.Data = Context.Employees.Include("Users").FirstOrDefault(d => d.ID == objToSave1.ID);
 
             }
             catch (Exception e)
@@ -105,17 +106,17 @@ namespace RiderRepo
 
             try
             {
-                var objToDelete1 = Context.Riders.FirstOrDefault(d => d.ID == id);
+                var objToDelete1 = Context.Employees.FirstOrDefault(d => d.ID == id);
                 var objToDelete2 = Context.Users.FirstOrDefault(d=> d.ID == id);
 
                 if (objToDelete1 == null || objToDelete2 == null)
                 {
                     result.HasError = true;
-                    result.Message = "Invalid Rider ID";
+                    result.Message = "Invalid Employee ID";
                     return result;
                 }
 
-                Context.Riders.Remove(objToDelete1);
+                Context.Employees.Remove(objToDelete1);
                 Context.Users.Remove(objToDelete2);
                 Context.SaveChanges();
 
@@ -130,7 +131,7 @@ namespace RiderRepo
             return result;
         }
 
-        private bool IsValidToSave(Riders obj, Result<Riders> result)
+        private bool IsValidToSave(Employees obj, Result<Employees> result)
         {
             if (!ValidationHelper.IsValidString(obj.Users.Name))
             {
@@ -143,13 +144,6 @@ namespace RiderRepo
             {
                 result.HasError = true;
                 result.Message = "Email already exists";
-                return false;
-            }
-
-            if (obj.Users.Password.Length < 6)
-            {
-                result.HasError = true;
-                result.Message = "Password should be 6 characters long";
                 return false;
             }
 

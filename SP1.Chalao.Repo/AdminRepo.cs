@@ -7,8 +7,9 @@ using SP1.Chalao.Entities;
 using SP1.Chalao.Framework.Constants;
 using SP1.Chalao.Framework.Helper;
 using SP1.Chalao.Framework.Objects;
+using SP1.Chalao.Repo;
 
-namespace RiderRepo
+namespace SP1.Chalao.Repo
 {
     public class AdminRepo : BaseRepo
     {

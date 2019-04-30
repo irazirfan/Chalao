@@ -1,21 +1,14 @@
 ﻿using SP1.Chalao.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using System.Web.Services.Description;
-using ATP2.SMS.Repo;
 using ATP2.SMS.Web.Framework.Bases;
-using Microsoft.Ajax.Utilities;
 using SP1.Chalao.Entities;
 using Newtonsoft.Json;
 using SP1.Chalao.Framework.Constants;
-using SP1.Chalao.Framework.Helper;
 using SP1.Chalao.Framework.Objects;
-using SP1.Chalao.Web.Framework.Attributes;
 using SP1.Chalao.Web.Framework.Utils;
 using SP1.Chalao.Web.ViewModels;
 

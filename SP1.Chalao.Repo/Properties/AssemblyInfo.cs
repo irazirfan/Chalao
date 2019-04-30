@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RiderRepo")]
+[assembly: AssemblyTitle("SP1.Chalao.Repo")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("RiderRepo")]
+[assembly: AssemblyProduct("SP1.Chalao.Repo")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("fd77cb64-76cb-4e2f-b60e-29fb4b1cef3c")]
+[assembly: Guid("1e6f1b5a-66cc-425c-a1e0-2ad6da8e6f02")]
 
 // Version information for an assembly consists of the following four values:
 //

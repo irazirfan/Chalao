@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FD77CB64-76CB-4E2F-B60E-29FB4B1CEF3C}</ProjectGuid>
+    <ProjectGuid>{1E6F1B5A-66CC-425C-A1E0-2AD6DA8E6F02}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RiderRepo</RootNamespace>
-    <AssemblyName>RiderRepo</AssemblyName>
+    <RootNamespace>SP1.Chalao.Repo</RootNamespace>
+    <AssemblyName>SP1.Chalao.Repo</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,21 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServerCompact, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.2.0\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,41 +47,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RiderRepo.cs" />
-    <Compile Include="EmployeeRepo.cs" />
     <Compile Include="AdminRepo.cs" />
     <Compile Include="BaseRepo.cs" />
+    <Compile Include="EmployeeRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RiderRepo.cs" />
     <Compile Include="UserRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SP1.Chalao.Data\SP1.Chalao.Data.csproj">
-      <Project>{9431780e-ad1b-49ba-b728-8bb76b1478c9}</Project>
+      <Project>{9431780E-AD1B-49BA-B728-8BB76B1478C9}</Project>
       <Name>SP1.Chalao.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\SP1.Chalao.Entities\SP1.Chalao.Entities.csproj">
-      <Project>{690c0050-7908-4d5a-ad70-689bec3401ca}</Project>
+      <Project>{690C0050-7908-4D5A-AD70-689BEC3401CA}</Project>
       <Name>SP1.Chalao.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\SP1.Chalao.Framework\SP1.Chalao.Framework.csproj">
       <Project>{cb09e2a3-4842-4633-9752-15161e0b1921}</Project>
       <Name>SP1.Chalao.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SP1.Chalao.Model\SP1.Chalao.Model.csproj">
-      <Project>{09a231b6-6a60-456a-bcc9-aeab5d6f39ce}</Project>
-      <Name>SP1.Chalao.Model</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
-    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
-    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
-    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
-  </PropertyGroup>
 </Project>
