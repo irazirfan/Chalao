@@ -10,7 +10,7 @@ namespace SP1.Chalao.Web.Framework.Attributes
     [AttributeUsage(AttributeTargets.Class|AttributeTargets.Method,AllowMultiple = true, Inherited = true)]
     public class ChalaoAuthorize : FilterAttribute, IAuthorizationFilter
     {
-        private EnumCollection.UserTypeEnum CurrentType;
+        public static EnumCollection.UserTypeEnum CurrentType;
         public ChalaoAuthorize(EnumCollection.UserTypeEnum userType)
         {
             CurrentType = userType;

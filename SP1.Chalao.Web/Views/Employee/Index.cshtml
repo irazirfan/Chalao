@@ -1,19 +1,111 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
 }
 
-<div>
-    <h2>Employee View</h2>
-    @if (!string.IsNullOrEmpty(ViewBag.Message))
-    {
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>ERROR!</strong> @ViewBag.Message
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true">
+                            Common
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <a class="list-group-item" href="#bookingInfo">
+                            <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Booking Info
+                        </a>
+                        <a class="list-group-item" href="#parkingZone">
+                            <span class="glyphicon glyphicon-tags"></span> &nbsp; Parking Zone
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false">
+                            Human Resource
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        <a class="list-group-item" href="#navbar" onclick="AddTab('Rider', '@Url.Action("List", "Rider")')">
+                            <span class="glyphicon glyphicon-user"></span> &nbsp; Rider
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-    }
+    </div>
+    <div class="col-md-9" style="min-height: 520px; border-left: 1px solid grey">
+        <div>
 
-    <a href="@Url.Action("Logout", "Account")"
+            <!-- Nav tabs -->
+            <ul id="sideMenu" class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active" id="li1"><a href="#div1" aria-controls="dashboard" role="tab" data-toggle="tab">Dashboard &nbsp;&nbsp;<span style="cursor: pointer" class="glyphicon glyphicon-remove-circle" onclick="RemoveTab(1)"></span></a></li>
+            </ul>
 
-       class="btn btn-primary">Logout</a>
+            <!-- Tab panes -->
+            <div class="tab-content" id="mainTab">
+                <div role="tabpanel" class="tab-pane active" id="div1">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="~/Content/images/1.jpg" style="width: 100%; height: 200px" class="img-thumbnail" />
+                        </div>
+                        <div class="col-md-6">
+                            <img src="~/Content/images/2.jpg" style="width: 100%; height: 200px" class="img-thumbnail" />
+                        </div>
+                        <div class="col-md-6">
+                            <img src="~/Content/images/3.jpg" style="width: 100%; height: 200px" class="img-thumbnail" />
+                        </div>
+                        <div class="col-md-6">
+                            <img src="~/Content/images/6.jpg" style="width: 100%; height: 200px" class="img-thumbnail" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
+
+
+
+@section scripts
+{
+    <script>
+
+        var i = 2;
+        function AddTab(tabName, link) {
+            var height = $(document).height() - 200;
+            $('#sideMenu').append('<li id="li' + i + '"><a href="#div' + i + '" role="tab" data-toggle="tab">' + tabName +' <span style="cursor: pointer" class="glyphicon glyphicon-remove-circle" onclick="RemoveTab('+i+')"></span></a></li>');
+            $('#mainTab').append('<div class="tab-pane" id="div' + i + '"><iframe src="'+link+'" width="100%" height="'+height+'"></iframe></div>');
+            $('#sideMenu a:last').tab('show');
+            i++;
+        }
+
+        function RemoveTab(index) {
+
+            if ($('#li' + index).hasClass('active')) {
+
+                var prevLi = $('#li' + index).prev();
+                var prevDiv = $('#div' + index).prev();
+
+                prevLi.addClass('active');
+                prevDiv.addClass('active');
+            }
+
+            $('#li' + index).remove();
+            $('#div' + index).remove();
+        }
+
+    </script>
+}

@@ -4,6 +4,7 @@ using ATP2.SMS.Web.Framework.Bases;
 using SP1.Chalao.Entities;
 using SP1.Chalao.Framework.Constants;
 using SP1.Chalao.Web.Framework.Attributes;
+using SP1.Chalao.Web.Framework.Utils;
 
 namespace SP1.Chalao.Web.Controllers
 {
@@ -22,7 +23,7 @@ namespace SP1.Chalao.Web.Controllers
 
             return View();
         }
-        [ChalaoAuthorize(EnumCollection.UserTypeEnum.Admin)]
+        [ChalaoAuthorize(EnumCollection.UserTypeEnum.Employee)]
         public ActionResult List(string key = "")
         {
             var result = RiderRepo.GetAll(key);
@@ -88,7 +89,7 @@ namespace SP1.Chalao.Web.Controllers
             if (result.HasError)
             {
                 ViewBag.Error = result.Message;
-                return View(result);
+                return View(riders);
             }
 
             return RedirectToAction("Index");
