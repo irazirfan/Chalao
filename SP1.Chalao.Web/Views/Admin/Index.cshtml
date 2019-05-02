@@ -17,25 +17,25 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
-                        <a class="list-group-item" href="#bookingInfo">
-                            <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Booking Info
+                        <a class="list-group-item" href="#navbar" onclick="AddTab('Parking Zone', '@Url.Action("Index", "ParkingZone")')">
+                            <span class="glyphicon glyphicon-paperclip"></span> &nbsp; Parking Zone
                         </a>
-                        <a class="list-group-item" href="#parkingZone">
-                            <span class="glyphicon glyphicon-tags"></span> &nbsp; Parking Zone
+                        <a class="list-group-item" href="#navbar" onclick="AddTab('Booking Info', '@Url.Action("Index", "BookingInfo")')">
+                            <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Booking Info
                         </a>
                     </div>
                 </div>
             </div>
 
             <div class="panel panel-primary">
-                <div class="panel-heading" role="tab" id="headingThree">
+                <div class="panel-heading" role="tab" id="headingTwo">
                     <h4 class="panel-title">
-                        <a style="text-decoration: none; display: block" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false">
+                        <a style="text-decoration: none; display: block" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false">
                             Human Resource
                         </a>
                     </h4>
                 </div>
-                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="panel-body">
                         <a class="list-group-item" href="#navbar" onclick="AddTab('Admin', '@Url.Action("List", "Admin")')">
                             <span class="glyphicon glyphicon-eye-open"></span> &nbsp; Admin
