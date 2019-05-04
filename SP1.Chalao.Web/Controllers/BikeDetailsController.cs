@@ -9,9 +9,9 @@ using SP1.Chalao.Web.Framework.Bases;
 
 namespace SP1.Chalao.Web.Controllers
 {
-    public class BookInfoController : BaseController
+    public class BikeDetailsController : BaseController
     {
-        // GET: BookInfo
+        // GET: BikeDetails
         public ActionResult Index()
         {
             return View();
@@ -19,7 +19,7 @@ namespace SP1.Chalao.Web.Controllers
 
         public ActionResult List(string key = "")
         {
-            var result = BookRepo.GetAll(key);
+            var result = BikeRepo.GetAll(key);
             if (TempData["Error"] != null)
             {
                 ViewBag.Error = TempData["Error"];
@@ -29,24 +29,24 @@ namespace SP1.Chalao.Web.Controllers
 
         public ActionResult Edit(int id)
         {
-            var result = BookRepo.GetByID(id);
-            return View(result.Data ?? new Book_Info());
+            var result = BikeRepo.GetByID(id);
+            return View(result.Data ?? new Bike_Details());
         }
 
         [HttpPost]
-        public ActionResult Edit(Book_Info bookInfo)
+        public ActionResult Edit(Bike_Details bikesDetails)
         {
             if (!ModelState.IsValid)
             {
-                return View(bookInfo);
+                return View(bikesDetails);
             }
 
-            var result = BookRepo.Save(bookInfo);
+            var result = BikeRepo.Save(bikesDetails);
 
             if (result.HasError)
             {
                 ViewBag.Error = result.Message;
-                return View(bookInfo);
+                return View(bikesDetails);
             }
 
             return RedirectToAction("List");
@@ -54,7 +54,7 @@ namespace SP1.Chalao.Web.Controllers
 
         public ActionResult Delete(int id)
         {
-            var result = BookRepo.Delete(id);
+            var result = BikeRepo.Delete(id);
 
             if (result.HasError)
             {
