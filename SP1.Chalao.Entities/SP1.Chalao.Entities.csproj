@@ -54,6 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bike_Details.cs" />
+    <Compile Include="Book_Info.cs" />
     <Compile Include="Riders.cs" />
     <Compile Include="Employees.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

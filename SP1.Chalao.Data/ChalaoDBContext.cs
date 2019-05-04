@@ -26,6 +26,8 @@ namespace SP1.Chalao.Data
          public DbSet<Admins> Admins { get; set; }
          public DbSet<Employees> Employees { get; set; }
          public DbSet<Riders> Riders { get; set; }
+         public DbSet<Bike_Details> BikeDetails { get; set; }
+         public DbSet<Book_Info> BookInfos { get; set; }
          
     }
 }

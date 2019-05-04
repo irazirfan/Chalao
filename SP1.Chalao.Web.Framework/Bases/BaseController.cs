@@ -2,7 +2,7 @@
 using SP1.Chalao.Data;
 using SP1.Chalao.Repo;
 
-namespace ATP2.SMS.Web.Framework.Bases
+namespace SP1.Chalao.Web.Framework.Bases
 {
     public class BaseController : Controller
     {
@@ -68,6 +68,31 @@ namespace ATP2.SMS.Web.Framework.Bases
                     _riderRepo = new RiderRepo();
 
                 return _riderRepo;
+            }
+        }
+
+        private BikeRepo _bikeRepo;
+
+        public BikeRepo BikeRepo
+        {
+            get
+            {
+                if (_bikeRepo == null)
+                    _bikeRepo = new BikeRepo();
+
+                return _bikeRepo;
+            }
+        }
+
+        private BookRepo _bookRepo;
+        public BookRepo BookRepo
+        {
+            get
+            {
+                if (_bookRepo == null)
+                    _bookRepo = new BookRepo();
+
+                return _bookRepo;
             }
         }
 
