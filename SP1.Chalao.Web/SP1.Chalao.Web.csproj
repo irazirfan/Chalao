@@ -201,11 +201,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Views\Shared\_RiderLayout.cshtml" />
-    <Content Include="Views\BikeDetails\List.cshtml" />
-    <Content Include="Views\BookInfo\List.cshtml" />
-    <Content Include="Views\BikeDetails\Edit.cshtml" />
-    <Content Include="Views\BookInfo\Edit.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -237,6 +232,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Shared\_RiderLayout.cshtml" />
+    <Content Include="Views\BikeDetails\List.cshtml" />
+    <Content Include="Views\BookInfo\List.cshtml" />
+    <Content Include="Views\BikeDetails\Edit.cshtml" />
+    <Content Include="Views\BookInfo\Edit.cshtml" />
     <Content Include="Views\Admin\List.cshtml" />
     <Content Include="Views\Shared\_InnerLayout.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />

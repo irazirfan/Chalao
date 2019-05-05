@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_InnerLayout.cshtml";
 }
 
-<h2> Riders </h2>
+<h2> Bike Details </h2>
 
 <div class="row">
     <div class="col-md-8">
@@ -30,7 +30,6 @@
                 <th>ID</th>
                 <th>Bike ID</th>
                 <th>Status</th>
-                <th>Details</th>
                 <th>Action</th>
             </tr>
             @foreach (var bike in Model.Data)
@@ -39,7 +38,6 @@
                     <td>@bike.ID</td>
                     <td>@bike.Bike_ID</td>
                     <td>@bike.Status</td>
-                    <td>@bike.Details</td>
                     <td>
                         <a href="@Url.Action("Edit","BikeDetails", new {id =bike.ID })" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-edit">Edit</span></a>
                         <a onclick="DeleteUrl('@Url.Action("Delete","BikeDetails", new {id = bike.ID})')" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-remove">Delete</span></a>

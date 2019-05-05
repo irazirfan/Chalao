@@ -54,7 +54,6 @@ namespace SP1.Chalao.Repo
 
                 objToSave.Bike_ID = value.Bike_ID;
                 objToSave.Status = value.Status;
-                objToSave.Details = value.Details;
 
                 Context.SaveChanges();
 

@@ -55,7 +55,21 @@ namespace SP1.Chalao.Repo
                 objToSave.Bike_ID = value.Bike_ID;
                 objToSave.Rider_Name = value.Rider_Name;
                 objToSave.Rider_Email = value.Rider_Email;
+                objToSave.Book_Schedule = DateTime.Now.Year + "/" + DateTime.Now.Month + "/" + DateTime.Now.Day + "-" + DateTime.Now.Hour + ":" + DateTime.Now.Minute + DateTime.Now.Second + "";
 
+
+                Context.SaveChanges();
+
+                var objToSave2 = Context.BikeDetails.SingleOrDefault(b => b.Bike_ID == value.Bike_ID);
+
+                if (objToSave2 == null)
+                {
+                    objToSave2 = new Bike_Details();
+                    Context.BikeDetails.Add(objToSave2);
+                }
+
+                objToSave2.Bike_ID = objToSave.Bike_ID;
+                objToSave2.Status = 1;
 
                 Context.SaveChanges();
 

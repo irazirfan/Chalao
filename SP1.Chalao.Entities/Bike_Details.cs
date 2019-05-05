@@ -22,7 +22,5 @@ namespace SP1.Chalao.Entities
         [Required]
         public int Status { get; set; }
 
-        public string Details { get; set; }
-
     }
 }
