@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SP1.Chalao.Entities;
+using SP1.Chalao.Framework.Constants;
 using SP1.Chalao.Framework.Helper;
 using SP1.Chalao.Framework.Objects;
 
@@ -47,6 +48,13 @@ namespace SP1.Chalao.Repo
                     objToSave = new Bike_Details();
                     Context.BikeDetails.Add(objToSave);
                 }
+
+                if (!IsValidToSave(value, result))
+                    return result;
+
+                objToSave.Bike_ID = value.Bike_ID;
+                objToSave.Status = value.Status;
+                objToSave.Details = value.Details;
 
                 Context.SaveChanges();
 
@@ -105,6 +113,25 @@ namespace SP1.Chalao.Repo
             }
 
             return result;
+        }
+
+        private bool IsValidToSave(Bike_Details obj, Result<Bike_Details> result)
+        {
+            if (!ValidationHelper.IsValidString(obj.Bike_ID))
+            {
+                result.HasError = true;
+                result.Message = "Invalid Bike ID";
+                return false;
+            }
+
+            if (Context.BikeDetails.Any(ui => ui.Bike_ID == obj.Bike_ID && ui.ID != obj.ID))
+            {
+                result.HasError = true;
+                result.Message = "Bike already exists";
+                return false;
+            }
+
+            return true;
         }
     }
 }

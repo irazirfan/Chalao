@@ -1,0 +1,44 @@
+﻿@model SP1.Chalao.Entities.Bike_Details
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<h2>Bike Details</h2>
+
+@using (Html.BeginForm("Edit"))
+{
+    if (SP1.Chalao.Framework.Helper.ValidationHelper.IsValidString(ViewBag.Error))
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Error
+        </div>
+    }
+    <div class="row">
+        <div class="form-group">
+            @Html.LabelFor(m => m.ID)
+            @Html.TextBoxFor(m => m.ID, new { @class = "form-control", @readonly = "readonly" })
+            @Html.ValidationMessageFor(m => m.ID)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Bike_ID)
+            @Html.TextBoxFor(m => m.Bike_ID, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Bike_ID)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Status)
+            @Html.TextBoxFor(m => m.Status, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Status)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Details)
+            @Html.TextBoxFor(m => m.Details, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Details)
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-success" value="Save" />
+        </div>
+
+    </div>
+}

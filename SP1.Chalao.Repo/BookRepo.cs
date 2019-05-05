@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,6 +47,15 @@ namespace SP1.Chalao.Repo
                     objToSave = new Book_Info();
                     Context.BookInfos.Add(objToSave);
                 }
+
+
+                if (!IsValidToSave(value, result))
+                    return result;
+
+                objToSave.Bike_ID = value.Bike_ID;
+                objToSave.Rider_Name = value.Rider_Name;
+                objToSave.Rider_Email = value.Rider_Email;
+
 
                 Context.SaveChanges();
 
@@ -104,6 +114,25 @@ namespace SP1.Chalao.Repo
             }
 
             return result;
+        }
+
+        private bool IsValidToSave(Book_Info obj, Result<Book_Info> result)
+        {
+            if (!ValidationHelper.IsValidString(obj.Bike_ID))
+            {
+                result.HasError = true;
+                result.Message = "Invalid Name";
+                return false;
+            }
+
+            if (Context.BikeDetails.All(ui => ui.Bike_ID == obj.Bike_ID && ui.Status == 1))
+            {
+                result.HasError = true;
+                result.Message = "Bike already booked";
+                return false;
+            }
+
+            return true;
         }
     }
 }

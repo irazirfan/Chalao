@@ -5,7 +5,7 @@ using SP1.Chalao.Framework.Objects;
 
 namespace SP1.Chalao.Web.Framework.Utils
 {
-    public class HttpUtil
+    public static class HttpUtil
     {
         public static UserProfile Current
         {
