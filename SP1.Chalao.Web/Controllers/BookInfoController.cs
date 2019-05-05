@@ -49,7 +49,7 @@ namespace SP1.Chalao.Web.Controllers
                 return View(bookInfo);
             }
 
-            return RedirectToAction("List");
+            return Content("Bike Booked Successfully");
         }
 
         public ActionResult Delete(int id)

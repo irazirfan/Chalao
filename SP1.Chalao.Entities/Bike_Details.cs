@@ -11,10 +11,9 @@ namespace SP1.Chalao.Entities
     [Table("Bike_Details")]
     public partial class Bike_Details
     {
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        public int ID { get; set; } 
 
         [Required]
         public string Bike_ID { get; set; }
