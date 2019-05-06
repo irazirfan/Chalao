@@ -83,6 +83,7 @@ namespace SP1.Chalao.Repo
                 }
 
                 objToSave2.ID = objToSave1.ID;
+                objToSave2.Gender_ID = value.Gender_ID;
                 objToSave2.DOB = value.DOB;
 
                 Context.SaveChanges();

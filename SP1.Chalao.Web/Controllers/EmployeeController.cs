@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using SP1.Chalao.Entities;
 using SP1.Chalao.Framework.Constants;
@@ -93,6 +94,25 @@ namespace SP1.Chalao.Web.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult GetData()
+        {
+            int male = Context.Riders.Where(x => x.Gender_ID == (int)EnumCollection.GenderTypeEnum.Male).Count();
+            int female = Context.Riders.Where(x => x.Gender_ID == (int)EnumCollection.GenderTypeEnum.Female).Count();
+            int others = Context.Riders.Where(x => x.Gender_ID == (int)EnumCollection.GenderTypeEnum.Others).Count();
+            Ratio obj = new Ratio();
+            obj.Male = male;
+            obj.Female = female;
+            obj.Others = others;
+
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+        public class Ratio
+        {
+            public int Male { get; set; }
+            public int Female { get; set; }
+            public int Others { get; set; }
         }
     }
 }

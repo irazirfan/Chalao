@@ -37,7 +37,7 @@ namespace SP1.Chalao.Web.Controllers
         public ActionResult Edit(int id)
         {
             var result = RiderRepo.GetByID(id);
-            return View(result.Data ?? new Riders() { Users = new Users(), DOB = DateTime.Now });
+            return View(result.Data ?? new Riders() { Users = new Users(),DOB = DateTime.Now });
         }
 
         [HttpPost]
