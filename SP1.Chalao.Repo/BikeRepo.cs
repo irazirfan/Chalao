@@ -21,7 +21,7 @@ namespace SP1.Chalao.Repo
                 var list = Context.BikeDetails.ToList();
 
                 if (ValidationHelper.IsValidString(key))
-                    list = list.Where(a => a.Bike_ID.ToLower().Contains(key.ToLower())).ToList();
+                    list = list.Where(a => a.ID.ToString().Contains(key)).ToList();
 
                 result.Data = list;
 
@@ -52,7 +52,7 @@ namespace SP1.Chalao.Repo
                 if (!IsValidToSave(value, result))
                     return result;
 
-                objToSave.Bike_ID = value.Bike_ID;
+                objToSave.ID = value.ID;
                 objToSave.Status = value.Status;
 
                 Context.SaveChanges();
@@ -116,14 +116,14 @@ namespace SP1.Chalao.Repo
 
         private bool IsValidToSave(Bike_Details obj, Result<Bike_Details> result)
         {
-            if (!ValidationHelper.IsValidString(obj.Bike_ID))
+            /*if (!ValidationHelper.IsValidString(obj.ID))
             {
                 result.HasError = true;
                 result.Message = "Invalid Bike ID";
                 return false;
-            }
+            }*/
 
-            if (Context.BikeDetails.Any(ui => ui.Bike_ID == obj.Bike_ID && ui.ID != obj.ID))
+            if (Context.BikeDetails.Any(ui => ui.ID == obj.ID && ui.ID != obj.ID))
             {
                 result.HasError = true;
                 result.Message = "Bike already exists";

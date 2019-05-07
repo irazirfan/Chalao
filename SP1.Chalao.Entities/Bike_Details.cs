@@ -13,10 +13,7 @@ namespace SP1.Chalao.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; } 
-
-        [Required]
-        public string Bike_ID { get; set; }
+        public int ID { get; set; }
 
         [Required]
         public int Status { get; set; }

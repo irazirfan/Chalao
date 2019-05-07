@@ -102,9 +102,9 @@ namespace SP1.Chalao.Web.Controllers
 
         public ActionResult GetData()
         {
-            int male = Context.Riders.Where(x => x.Gender_ID == (int) EnumCollection.GenderTypeEnum.Male).Count();
-            int female = Context.Riders.Where(x => x.Gender_ID == (int) EnumCollection.GenderTypeEnum.Female).Count();
-            int others = Context.Riders.Where(x => x.Gender_ID == (int) EnumCollection.GenderTypeEnum.Others).Count();
+            int male = Context.Riders.Count(x => x.Gender_ID == (int) EnumCollection.GenderTypeEnum.Male);
+            int female = Context.Riders.Count(x => x.Gender_ID == (int) EnumCollection.GenderTypeEnum.Female);
+            int others = Context.Riders.Count(x => x.Gender_ID == (int) EnumCollection.GenderTypeEnum.Others);
             Ratio obj = new Ratio();
             obj.Male = male;
             obj.Female = female;

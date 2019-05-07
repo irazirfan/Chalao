@@ -60,7 +60,7 @@ namespace SP1.Chalao.Repo
 
                 Context.SaveChanges();
 
-                var objToSave2 = Context.BikeDetails.SingleOrDefault(b => b.Bike_ID == value.Bike_ID);
+                var objToSave2 = Context.BikeDetails.SingleOrDefault(b => b.ID == value.ID);
 
                 if (objToSave2 == null)
                 {
@@ -68,7 +68,7 @@ namespace SP1.Chalao.Repo
                     Context.BikeDetails.Add(objToSave2);
                 }
 
-                objToSave2.Bike_ID = objToSave.Bike_ID;
+                objToSave2.ID = objToSave.ID;
                 objToSave2.Status = 1;
 
                 Context.SaveChanges();
@@ -132,14 +132,14 @@ namespace SP1.Chalao.Repo
 
         private bool IsValidToSave(Book_Info obj, Result<Book_Info> result)
         {
-            if (!ValidationHelper.IsValidString(obj.Bike_ID))
-            {
-                result.HasError = true;
-                result.Message = "Invalid Name";
-                return false;
-            }
+            //if (!ValidationHelper.IsValidString(obj.Bike_ID))
+            //{
+            //    result.HasError = true;
+            //    result.Message = "Invalid Name";
+            //    return false;
+            //}
 
-            if (Context.BikeDetails.All(ui => ui.Bike_ID == obj.Bike_ID && ui.Status == 1))
+            if (Context.BikeDetails.All(ui => ui.ID == obj.ID && ui.Status == 1))
             {
                 result.HasError = true;
                 result.Message = "Bike already booked";
