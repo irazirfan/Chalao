@@ -16,7 +16,7 @@ namespace SP1.Chalao.Entities
         public int ID { get; set; }
 
         [Required]
-        public string SerialNo { get; set; }
+        public string Serial_No { get; set; }
 
         [Required]
         public int Status { get; set; }

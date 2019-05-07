@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,9 @@ namespace SP1.Chalao.Data
             modelBuilder.Entity<Users>()
                 .HasOptional(a => a.Rider)
                 .WithRequired(ab => ab.Users);
+            modelBuilder.Entity<Book_Info>()
+                .HasOptional(a => a.BikeDetails);
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
         public DbSet<Users> Users { get; set; }

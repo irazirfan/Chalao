@@ -53,7 +53,7 @@ namespace SP1.Chalao.Repo
                     return result;
 
                 objToSave.ID = value.ID;
-                objToSave.SerialNo = value.SerialNo;
+                objToSave.Serial_No = value.Serial_No;
                 objToSave.Status = value.Status;
 
                 Context.SaveChanges();

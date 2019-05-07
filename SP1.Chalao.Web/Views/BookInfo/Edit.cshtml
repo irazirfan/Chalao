@@ -21,9 +21,9 @@
                 @Html.ValidationMessageFor(m => m.ID)
             </div>
             <div class="form-group">
-                @Html.LabelFor(m => m.BikeDetails.ID)
-                @Html.DropDownListFor(m => m.BikeDetails.ID,new SelectList(ViewBag.Bikes, "ID","SerialNo"),"Choose a Bike", new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.BikeDetails.ID)
+                @Html.Label("Bike_ID")
+                @Html.DropDownListFor(m => m.Bike_ID,new SelectList(ViewBag.Bikes, "ID","ID"),"Choose a Bike", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Bike_ID)
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Rider_Name)
