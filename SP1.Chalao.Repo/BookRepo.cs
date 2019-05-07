@@ -52,10 +52,10 @@ namespace SP1.Chalao.Repo
                 if (!IsValidToSave(value, result))
                     return result;
 
-                objToSave.Bike_ID = value.Bike_ID;
+                objToSave.ID = value.ID;
                 objToSave.Rider_Name = value.Rider_Name;
                 objToSave.Rider_Email = value.Rider_Email;
-                objToSave.Book_Schedule = DateTime.Now.Year + "/" + DateTime.Now.Month + "/" + DateTime.Now.Day + "-" + DateTime.Now.Hour + ":" + DateTime.Now.Minute + DateTime.Now.Second + "";
+                objToSave.Book_Schedule = DateTime.Now.Year + "/" + DateTime.Now.Month + "/" + DateTime.Now.Day + "-" + DateTime.Now.Hour + ":" + DateTime.Now.Minute + "";
 
 
                 Context.SaveChanges();
@@ -68,7 +68,7 @@ namespace SP1.Chalao.Repo
                     Context.BikeDetails.Add(objToSave2);
                 }
 
-                objToSave2.ID = objToSave.ID;
+                objToSave2.SerialNo = objToSave2.SerialNo;
                 objToSave2.Status = 1;
 
                 Context.SaveChanges();

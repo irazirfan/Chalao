@@ -1,4 +1,5 @@
 ﻿@using System.Web.UI.WebControls
+@using SP1.Chalao.Web.Framework.Utils
 @model SP1.Chalao.Entities.Book_Info
 @{
     ViewBag.Title = "Edit";
@@ -20,23 +21,23 @@
                 @Html.ValidationMessageFor(m => m.ID)
             </div>
             <div class="form-group">
-                @Html.LabelFor(m => m.Bike_ID)
-                @Html.DropDownListFor(m => m.Bike_ID,new SelectList(ViewBag.Bikes, "ID","ID"),"Select Bike", new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Bike_ID)
+                @Html.LabelFor(m => m.BikeDetails.SerialNo)
+                @Html.DropDownListFor(m => m.BikeDetails.SerialNo,new SelectList(ViewBag.Bikes, "ID","SerialNo"),"Select Bike", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.BikeDetails.SerialNo)
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Rider_Name)
-                @Html.TextBoxFor(m => m.Rider_Name, new { @class = "form-control" })
+                @Html.TextBox("Rider_Name", HttpUtil.Current.Name, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Rider_Name)
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Rider_Email)
-                @Html.TextBoxFor(m => m.Rider_Email, new { @class = "form-control" })
+                @Html.TextBox("Rider_Email",HttpUtil.Current.Email, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Rider_Email)
             </div>
             <div class="form-group">
-                @Html.LabelFor(m => m.Book_Schedule)
-                @Html.TextBoxFor(m => m.Book_Schedule, new { @class = "form-control" })
+                @Html.LabelFor(m=>m.Book_Schedule)
+                @Html.TextBox("Book_Schedule", DateTime.Now.Year + "/" + DateTime.Now.Month + "/" + DateTime.Now.Day + "-" + DateTime.Now.Hour + ":" + DateTime.Now.Minute + "", new {@class = "form-control"})
                 @Html.ValidationMessageFor(m => m.Book_Schedule)
             </div>
 
