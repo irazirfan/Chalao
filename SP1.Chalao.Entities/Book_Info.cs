@@ -16,7 +16,7 @@ namespace SP1.Chalao.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        public string SerialNo{ get; set; }
+        public int Bike_ID{ get; set; }
 
         [Required]
         public string Rider_Name { get; set; }
@@ -25,7 +25,6 @@ namespace SP1.Chalao.Entities
         [EmailAddress]
         public string Rider_Email { get; set; }
 
-        [Required]
         public string Book_Schedule { get; set; }
 
         [ForeignKey("ID")]

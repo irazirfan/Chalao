@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Common.CommandTrees;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,25 +54,23 @@ namespace SP1.Chalao.Repo
                     return result;
 
                 objToSave.ID = value.ID;
+                objToSave.Bike_ID = value.Bike_ID;
                 objToSave.Rider_Name = value.Rider_Name;
                 objToSave.Rider_Email = value.Rider_Email;
                 objToSave.Book_Schedule = DateTime.Now.Year + "/" + DateTime.Now.Month + "/" + DateTime.Now.Day + "-" + DateTime.Now.Hour + ":" + DateTime.Now.Minute + "";
 
-
                 Context.SaveChanges();
 
-                var objToSave2 = Context.BikeDetails.SingleOrDefault(b => b.ID == value.ID);
+                var objToSave1 = Context.BikeDetails.SingleOrDefault(a => a.ID == value.ID);
 
-                if (objToSave2 == null)
+                if (objToSave1 == null)
                 {
-                    objToSave2 = new Bike_Details();
-                    Context.BikeDetails.Add(objToSave2);
+                    objToSave1 = new Bike_Details();
+                    Context.BikeDetails.Add(objToSave1);
                 }
 
-                objToSave2.SerialNo = objToSave2.SerialNo;
-                objToSave2.Status = 1;
-
-                Context.SaveChanges();
+                objToSave1.SerialNo = value.BikeDetails.SerialNo;
+                objToSave1.Status = 1;
 
                 result.Data = Context.BookInfos.FirstOrDefault(b => b.ID == objToSave.ID);
 

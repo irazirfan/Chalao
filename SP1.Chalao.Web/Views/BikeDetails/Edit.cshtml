@@ -14,21 +14,26 @@
             @ViewBag.Error
         </div>
     }
-    <div class="row">
-        <div class="form-group">
-            @Html.LabelFor(m => m.ID)
-            @Html.TextBoxFor(m => m.ID, new { @class = "form-control", @readonly = "readonly" })
-            @Html.ValidationMessageFor(m => m.ID)
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Status)
-            @Html.TextBoxFor(m => m.Status, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Status)
-        </div>
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.ID)
+                @Html.TextBoxFor(m => m.ID, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(m => m.ID)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.SerialNo)
+                @Html.TextBoxFor(m => m.SerialNo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.SerialNo)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Status)
+                @Html.TextBoxFor(m => m.Status, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Status)
+            </div>
 
-        <div class="form-group">
-            <input type="submit" class="btn btn-success" value="Save" />
-        </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="Save" />
+            </div>
 
-    </div>
+        </div>
 }

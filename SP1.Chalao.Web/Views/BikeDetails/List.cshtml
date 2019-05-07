@@ -28,6 +28,7 @@
         <table class="table table-striped table-hover">
             <tr>
                 <th>ID</th>
+                <th>Bike Serial No</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -35,6 +36,7 @@
             {
                 <tr>
                     <td>@bike.ID</td>
+                    <td>@bike.SerialNo</td>
                     <td>@bike.Status</td>
                     <td>
                         <a href="@Url.Action("Edit","BikeDetails", new {id =bike.ID })" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-edit">Edit</span></a>
