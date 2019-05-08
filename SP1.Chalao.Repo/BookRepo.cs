@@ -53,7 +53,6 @@ namespace SP1.Chalao.Repo
                 if (!IsValidToSave(value, result))
                     return result;
 
-                objToSave.ID = value.ID;
                 objToSave.Bike_ID = value.BikeDetails.ID;
                 objToSave.Rider_Name = value.Rider_Name;
                 objToSave.Rider_Email = value.Rider_Email;
@@ -61,7 +60,7 @@ namespace SP1.Chalao.Repo
 
                 Context.SaveChanges();
 
-                var objToSave1 = Context.BikeDetails.SingleOrDefault(a => a.ID == value.ID);
+                var objToSave1 = Context.BikeDetails.SingleOrDefault(a => a.ID == objToSave.Bike_ID);
 
                 if (objToSave1 == null)
                 {
@@ -74,7 +73,7 @@ namespace SP1.Chalao.Repo
 
                 Context.SaveChanges();
 
-                result.Data = Context.BookInfos.FirstOrDefault(b => b.ID == objToSave.ID);
+                result.Data = Context.BookInfos.Include("Bike_Details").FirstOrDefault(b => b.ID == objToSave.ID);
 
             }
             catch (Exception e)
