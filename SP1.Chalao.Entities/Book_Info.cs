@@ -28,8 +28,8 @@ namespace SP1.Chalao.Entities
         [Required]
         public string Book_Schedule { get; set; }
 
-        [ForeignKey("ID")]
-        public Bike_Details BikeDetails { get; set; }
+        [ForeignKey("Bike_ID")]
+        public virtual Bike_Details BikeDetails { get; set; }
 
     }
 }

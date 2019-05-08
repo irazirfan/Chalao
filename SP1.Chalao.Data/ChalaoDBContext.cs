@@ -21,9 +21,9 @@ namespace SP1.Chalao.Data
             modelBuilder.Entity<Users>()
                 .HasOptional(a => a.Rider)
                 .WithRequired(ab => ab.Users);
-            modelBuilder.Entity<Book_Info>()
-                .HasOptional(a => a.BikeDetails);
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            //modelBuilder.Entity<Book_Info>()
+            //    .HasOptional(a => a.BikeDetails);
+            //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
         public DbSet<Users> Users { get; set; }

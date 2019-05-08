@@ -39,10 +39,10 @@ namespace SP1.Chalao.Web.Controllers
         public ActionResult Edit(Book_Info bookInfo)
         {
             ViewBag.Bikes = Context.BikeDetails.Where(b => b.Status == 0).ToList();
-            if (!ModelState.IsValid)
+           /* if (!ModelState.IsValid)
             {
                 return View(bookInfo);
-            }
+            }*/
 
             var result = BookRepo.Save(bookInfo);
 

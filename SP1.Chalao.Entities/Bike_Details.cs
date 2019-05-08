@@ -21,5 +21,6 @@ namespace SP1.Chalao.Entities
         [Required]
         public int Status { get; set; }
 
+        public virtual ICollection<Book_Info> BookInfos { get; set; }
     }
 }

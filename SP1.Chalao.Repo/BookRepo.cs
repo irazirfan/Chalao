@@ -53,7 +53,7 @@ namespace SP1.Chalao.Repo
                 if (!IsValidToSave(value, result))
                     return result;
 
-                objToSave.Bike_ID = value.BikeDetails.ID;
+                objToSave.Bike_ID = value.Bike_ID;
                 objToSave.Rider_Name = value.Rider_Name;
                 objToSave.Rider_Email = value.Rider_Email;
                 objToSave.Book_Schedule = value.Book_Schedule;
@@ -64,16 +64,16 @@ namespace SP1.Chalao.Repo
 
                 if (objToSave1 == null)
                 {
-                    objToSave1 = new Bike_Details();
-                    Context.BikeDetails.Add(objToSave1);
+                    result.HasError = true;
+                    result.Message = "Invalid Bike Details";
+                    return result;
                 }
 
-                objToSave1.Serial_No = value.BikeDetails.Serial_No;
                 objToSave1.Status = 1;
 
                 Context.SaveChanges();
 
-                result.Data = Context.BookInfos.Include("Bike_Details").FirstOrDefault(b => b.ID == objToSave.ID);
+                result.Data = Context.BookInfos.FirstOrDefault(b => b.ID == objToSave.ID);
 
             }
             catch (Exception e)
