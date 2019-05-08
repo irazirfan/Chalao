@@ -25,6 +25,7 @@ namespace SP1.Chalao.Entities
         [EmailAddress]
         public string Rider_Email { get; set; }
 
+        [Required]
         public string Book_Schedule { get; set; }
 
         [ForeignKey("ID")]

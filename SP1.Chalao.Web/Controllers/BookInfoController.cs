@@ -4,7 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SP1.Chalao.Entities;
+using SP1.Chalao.Framework.Constants;
 using SP1.Chalao.Repo;
+using SP1.Chalao.Web.Framework.Attributes;
 using SP1.Chalao.Web.Framework.Bases;
 
 namespace SP1.Chalao.Web.Controllers
@@ -16,7 +18,6 @@ namespace SP1.Chalao.Web.Controllers
         {
             return View();
         }
-
         public ActionResult List(string key = "")
         {
             var result = BookRepo.GetAll(key);
