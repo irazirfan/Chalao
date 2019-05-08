@@ -46,13 +46,11 @@ namespace SP1.Chalao.Web.Controllers
 
             var result = BookRepo.Save(bookInfo);
 
-            if (result.HasError)
-            {
-                ViewBag.Error = result.Message;
-                return View(bookInfo);
-            }
+            if (!result.HasError) return Content("Bike Booked Successfully");
 
-            return Content("Bike Booked Successfully");
+            ViewBag.Error = result.Message;
+            return View(bookInfo);
+
         }
 
         public ActionResult Delete(int id)

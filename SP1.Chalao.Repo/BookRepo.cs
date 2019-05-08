@@ -54,7 +54,7 @@ namespace SP1.Chalao.Repo
                     return result;
 
                 objToSave.ID = value.ID;
-                //objToSave.Bike_ID = value.Bike_ID;
+                objToSave.Bike_ID = value.BikeDetails.ID;
                 objToSave.Rider_Name = value.Rider_Name;
                 objToSave.Rider_Email = value.Rider_Email;
                 objToSave.Book_Schedule = value.Book_Schedule;
@@ -69,7 +69,7 @@ namespace SP1.Chalao.Repo
                     Context.BikeDetails.Add(objToSave1);
                 }
 
-                //objToSave1.Serial_No = value.BikeDetails.Serial_No;
+                objToSave1.Serial_No = value.BikeDetails.Serial_No;
                 objToSave1.Status = 1;
 
                 Context.SaveChanges();
@@ -140,12 +140,12 @@ namespace SP1.Chalao.Repo
             //    return false;
             //}
 
-            /*if (Context.BikeDetails.All(ui => ui.ID == obj.ID))
+            if (Context.BikeDetails.Any(ui => ui.ID == obj.ID))
             {
                 result.HasError = true;
                 result.Message = "Bike already booked";
                 return false;
-            }*/
+            }
 
             return true;
         }
