@@ -99,24 +99,6 @@ namespace SP1.Chalao.Web.Controllers
         {
             return View();
         }
-
-        public ActionResult GetData()
-        {
-            int male = Context.Riders.Count(x => x.Gender_ID == (int) EnumCollection.GenderTypeEnum.Male);
-            int female = Context.Riders.Count(x => x.Gender_ID == (int) EnumCollection.GenderTypeEnum.Female);
-            int others = Context.Riders.Count(x => x.Gender_ID == (int) EnumCollection.GenderTypeEnum.Others);
-            Ratio obj = new Ratio();
-            obj.Male = male;
-            obj.Female = female;
-            obj.Others = others;
-
-            return Json(obj, JsonRequestBehavior.AllowGet);
-        }
-        public class Ratio
-        {
-            public int Male { get; set; }
-            public int Female { get; set; }
-            public int Others { get; set; }
-        }
+        
     }
 }

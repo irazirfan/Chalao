@@ -119,6 +119,19 @@ namespace SP1.Chalao.Repo
                 Context.BookInfos.Remove(objToDelete);
                 Context.SaveChanges();
 
+                var objToSave1 = Context.BikeDetails.SingleOrDefault(a => a.ID == objToDelete.Bike_ID);
+
+                if (objToSave1 == null)
+                {
+                    result.HasError = true;
+                    result.Message = "Invalid Bike Details";
+                    return result;
+                }
+
+                objToSave1.Status = 0;
+
+                Context.SaveChanges();
+
                 result.Data = true;
             }
             catch (Exception e)

@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using SP1.Chalao.Entities;
 using SP1.Chalao.Framework.Constants;
+using SP1.Chalao.Repo;
 using SP1.Chalao.Web.Framework.Attributes;
 using SP1.Chalao.Web.Framework.Bases;
 using SP1.Chalao.Web.Framework.Utils;
@@ -13,16 +14,16 @@ namespace SP1.Chalao.Web.Controllers
     {
         // GET: Rider
         [ChalaoAuthorize(EnumCollection.UserTypeEnum.Rider)]
-        public ActionResult Index(int error=-1)
+        public ActionResult Index(int error = -1)
 
         {
-            if (error != -1)
-            {
-                ViewBag.Message = "You were trying to bypass the security.";
-            }
-
-            return View();
+                if (error != -1)
+                {
+                    ViewBag.Message = "You were trying to bypass the security.";
+                }
+                return View();
         }
+
         [ChalaoAuthorize(EnumCollection.UserTypeEnum.Employee)]
         public ActionResult List(string key = "")
         {

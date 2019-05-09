@@ -235,8 +235,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Views\Admin\Dashboard.cshtml" />
-    <Content Include="Views\Employee\Dashboard.cshtml" />
     <Content Include="Views\Shared\_RiderLayout.cshtml" />
     <Content Include="Views\BikeDetails\List.cshtml" />
     <Content Include="Views\BookInfo\List.cshtml" />
