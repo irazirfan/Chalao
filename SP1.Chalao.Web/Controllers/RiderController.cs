@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using System.Web.Security;
 using SP1.Chalao.Entities;
 using SP1.Chalao.Framework.Constants;
 using SP1.Chalao.Repo;
@@ -95,6 +96,7 @@ namespace SP1.Chalao.Web.Controllers
 
             return RedirectToAction("Index");
         }
+
     }
 
 }

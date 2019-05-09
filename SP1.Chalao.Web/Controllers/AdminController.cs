@@ -94,11 +94,6 @@ namespace SP1.Chalao.Web.Controllers
 
             return RedirectToAction("Index");
         }
-
-        public ActionResult Dashboard()
-        {
-            return View();
-        }
         
     }
 }

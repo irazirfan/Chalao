@@ -147,7 +147,7 @@ namespace SP1.Chalao.Web.Controllers
             }
             catch (Exception e)
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Login","Account");
             }
             
         }
