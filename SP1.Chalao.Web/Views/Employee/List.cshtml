@@ -8,11 +8,15 @@
 
 <div class="row">
     <div class="col-md-8">
-        <input type="text" placeholder="search" id="searchText" value="@Request.Params["key"]"/>
+        <!--
+        <input type="text" placeholder="search" id="searchText" value="@Request.Params["key"]" />
         <a onclick="SearchUrl('@Url.Action("List","Employee")')" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-search">Search</span></a>
+        -->
+
+        <input id="myInput" type="text" placeholder="Search" />
         <a href="@Url.Action("Edit","Employee", new {id=-1})" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus">Add</span></a>
     </div>
-    
+
     @if (SP1.Chalao.Framework.Helper.ValidationHelper.IsValidString(ViewBag.Error))
     {
         <div class="alert alert-danger alert-dismissable" role="alert">
@@ -33,20 +37,22 @@
                 <th>Joining Date</th>
                 <th>Action</th>
             </tr>
-            @foreach (var employee in Model.Data)
-            {
-                <tr>
-                    <td>@employee.ID</td>
-                    <td>@employee.Users.Name</td>
-                    <td>@employee.Users.Email</td>
-                    <td>@employee.Users.Mobile</td>
-                    <td>@employee.JoinDate.ToString("dd/MM/yyyy")</td>
-                    <td>
-                        <a href="@Url.Action("Edit","Employee", new {id =employee.ID })" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-edit">Edit</span></a>
-                        <a onclick="DeleteUrl('@Url.Action("Delete","Employee", new {id = employee.ID})')" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-remove">Delete</span></a>
-                    </td>
-                </tr>
-            }
+            <tbody id="myTable">
+                @foreach (var employee in Model.Data)
+                {
+                    <tr>
+                        <td>@employee.ID</td>
+                        <td>@employee.Users.Name</td>
+                        <td>@employee.Users.Email</td>
+                        <td>@employee.Users.Mobile</td>
+                        <td>@employee.JoinDate.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            <a href="@Url.Action("Edit","Employee", new {id =employee.ID })" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-edit">Edit</span></a>
+                            <a onclick="DeleteUrl('@Url.Action("Delete","Employee", new {id = employee.ID})')" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-remove">Delete</span></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
         </table>
     }
 
@@ -57,14 +63,26 @@
 {
     <script>
 
+        /*
         function SearchUrl(url) {
             window.location.href = url + "?key=" + $('#searchText').val();
         }
+        */
 
         function DeleteUrl(url) {
             if (confirm("Are You Sure?"))
                 window.location.href = url;
         }
 
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
     </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 }
